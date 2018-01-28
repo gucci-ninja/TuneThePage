@@ -1,7 +1,8 @@
 import requests
 import indicoio
+import secrets
 
-indicoio.config.api_key = "4db161e811d460e7173d6dbb19384330"
+indicoio.config.api_key = secrets.API_KEY
 
 json = []
 
