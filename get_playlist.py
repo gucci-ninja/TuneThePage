@@ -1,27 +1,34 @@
 import requests
-from emotions import getMax
+import indicoio
 
-def get_playlist():
-    emotion = getMax()
-    headers = {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer BQAawDQpEsHRfWmfQAS2rBICU7fomzo4kxe2Hc2W0JP8KP9I_r4zo_3vfy62j_AiRgh5_ax9skkrGln0YXO5ndRx3j327SMKQgUKEXLMJhHfhxTuU-4oklNGBDlRkZ71qdXNVryo4WJHTBa6iEZsIqjOJfRmu6eMQA-bflvbp_pYDE0Tr49RVCbHIYVJQy5Xu4EGvJtdZ-Q590B-T13T-ao',
-    }
+indicoio.config.api_key = "4db161e811d460e7173d6dbb19384330"
 
-    url = ""
+json = []
 
-    if (emotion == "joy"):
-        url = "https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DXdPec7aLTmlC" 
-    elif (emotion == "anger"):
-        url = "https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:5s7Sp5OZsw981I2OkQmyrz"
-    elif (emotion == "fear"):
-        url = "https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:5fnM0FdCpinIGWnGGPLkVG"
-    elif (emotion == "sadness"):
-        url = "https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:37i9dQZF1DWVV27DiNWxkR"
-    elif (emotion == "surprise"):
-        url = "https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:17KsY3IOMquuLpi1h6bk9j"
+books = [
+    [
+        "Getting late for a meeting, need to run’, he said, as he slung his coat over the shoulder, and bounded out of the house. As he drove away, she came running down the stairs two at a time. ‘Wait, wait’, she said, but he had already left. Her mouth crumpled like used wrapping paper. ‘He forgot to give me a goodbye kiss’, she whispered in a voice that trembled under the weight of her hurt. She called him, ‘you left without giving me a kiss’, she said accusingly. ‘I am sorry sweetheart’, he said, his voice contrite. ‘It is okay’, she said, trying to be all grown up as she cut the call. She gulped down her breakfast morosely, wore her shoes, picked up her school bag and started to walk out of the door, her shoulders slumped. As she climbed down the steps, the car glided to a stop outside the house. He got out of the car. She ran to him, her whole face lit up like a Christmas tree. ‘I am sorry I forgot’, he said, as he picked her up and hugged her. She said nothing. Her jaw ached from smiling. Fifteen years later, no one would remember he was late for a meeting, but a little girl would never ever forget that her father drove all the way back home just to kiss her goodbye!",
+        "She giggled a lot in the theater but we had a good time. We quit our jobs and moved into a banana peel yellow Winnebago. We drove and lived for a long time in big places. A Midwest town enveloped us. We started a business, Wreckords and More. Our daughter was beautiful. She looked like Audrey Hepburn at ten years old.  I remember our daughter trying on her mom’s jeans and liking them because they were retro. She went to an expensive college with lots of brick buildings. We moved to the coast in a white cottage with a blue door. I painted the door before we unloaded the truck. It smeared on my shirt when we moved the couch in. We started a new business. All You Can Read, a used bookstore. We had beautiful chairs. Beautiful dark wicker chairs. Her legs bare beneath a polka dot skirt. Veined the way black streaks run through white marble statues of goddesses. She hands me a glass of water with half a lemon slice floating on top and smiles.",
+        "McCready and his partner, Luce Bey, had been investigating a string of murders of young women that had been dubbed the Vampire Killings, due to fang marks left in the victims necks after they had been stabbed from behind through the kidneys with some sort of long, thin blade.Of course, no blood had been taken from the victims other than that caused by the stabbings and it was assumed that the killer had some sort of vampire fantasy, probably the manifestation of a control/power obsession.Two victims had been found in the park, three others in the Northwest industrial area at different locations.Those had been dumped, the first two had been killed in the park on the path and dragged into the bushes."
+    ]
+         ]
 
-    return url
+for b in books:
+    for l in b:
+        url = ""
+        emotions = indicoio.emotion(l)
+        emotion = max(emotions, key=lambda i: emotions[i])
+        if (emotion == "joy"):
+            url = "37i9dQZF1DXdPec7aLTmlC" 
+        elif (emotion == "anger"):
+            url = "5s7Sp5OZsw981I2OkQmyrz"
+        elif (emotion == "fear"):
+            url = "5fnM0FdCpinIGWnGGPLkVG"
+        elif (emotion == "sadness"):
+            url = "37i9dQZF1DWVV27DiNWxkR"
+        elif (emotion == "surprise"):
+            url = "17KsY3IOMquuLpi1h6bk9j"
 
+        json.append([l, url])
 
-
+print(json)
