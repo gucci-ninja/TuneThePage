@@ -12,6 +12,10 @@
     cursor: pointer;
     vertical-align: center;
 }
+
+.btn:hover {
+    background-color: #B03A2E;
+}
  h1 {
   font-family: 'Sintony', sans-serif;
   text-align: left;
@@ -32,4 +36,11 @@
     text-align: center;
     vertical-align: center;
     background-color: rgba(0,0,0,0.5);
+}
+
+
+#frame {
+    margin: 0 auto;
+    width: 500 px; 
+    
 }
